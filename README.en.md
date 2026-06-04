@@ -45,6 +45,14 @@ If you use a high-function dock/launcher such as QuickQuay, the standard macOS D
 
 So CammandoTab creates that "left extended display" itself, as a **virtual display** (a "Dock Jail"). Turn on "Dock Jail (Virtual Display)" from the menu, place that virtual display at the far left in System Settings, and set the Dock position to "Left" — then the standard Dock and the standard Command+Tab switcher disappear from your main display (the steps are explained in the menu item "How to Use Dock Jail…"). It's a workaround, but a practically effective one.
 
+**Basic arrangement** (place the virtual display to the left):
+
+![Basic arrangement: place the small virtual display to the left of your main display](docs/dock-jail-arrangement-standard.jpeg)
+
+**Tip**: place the virtual display as low as possible so it overlaps the left edge of your main display only slightly (but keep some overlap — not just corner-to-corner). The smaller the overlap, the less your cursor slips past the left edge into the virtual display.
+
+![Tip: place the small virtual display at the bottom-left with minimal overlap (not just corner-to-corner)](docs/dock-jail-arrangement-recommended.png)
+
 ## Requirements
 
 - **OS**: macOS 13.0 or later
