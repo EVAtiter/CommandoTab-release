@@ -1,3 +1,5 @@
+**日本語** | [English](README.en.md)
+
 # CammandoTab
 
 マウスカーソルのいるモニターに表示される **Command+Tab 代替アプリスイッチャー**（macOS）。
