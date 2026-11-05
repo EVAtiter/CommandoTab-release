@@ -1,64 +1,86 @@
-**日本語** | [English](README.en.md)
+[English](README.md) | [日本語](README.ja.md)
 
-# CammandoTab
+# CommandoTab
 
-マウスカーソルのいるモニターに表示される **Command+Tab 代替アプリスイッチャー**（macOS）。
+A **Command+Tab app-switcher replacement** for macOS that always appears on the monitor where your cursor is.
 
-macOS 標準の Command+Tab はマルチモニター環境では、感覚とずれたディスプレイにスイッチャーが表示され、非常に使いづらく感じます。CammandoTab は標準の Command+Tab を乗っ取り、**常にマウスカーソルのあるモニター**に自前のスイッチャーを表示します。
+On multi-monitor setups, the built-in Command+Tab switcher shows up on a display that doesn't match your intuition, which feels awkward. CommandoTab takes over the standard Command+Tab and always shows its own switcher **on the monitor under your mouse cursor**.
 
-## ダウンロード
+Turn on **Dock Jail** and you can also push the standard Dock off your main display (using a virtual display) — handy when you use a high-function dock or launcher and the standard Dock just gets in the way.
 
-1. [Releases](../../releases/latest) から最新の `CammandoTab-<バージョン>.zip` をダウンロード
-2. zip を展開し、`CammandoTab.app` を `アプリケーション` フォルダーへ移動
-3. 初回起動時に **アクセシビリティ権限** を求められます
-   - システム設定 → プライバシーとセキュリティ → アクセシビリティ で **CammandoTab を許可**し、アプリを再起動してください（Command+Tab のキー入力を傍受するために必要です）
-4. 設定変更後、一度アプリケーションを終了し、再度起動すると確実です。
+## Download
 
-Apple の公証（Notarization）済みのため、Gatekeeper の警告なしに起動できます。
+1. Download the latest `CommandoTab-<version>.zip` from [Releases](../../releases/latest).
+2. Unzip it and move `CommandoTab.app` to your `Applications` folder.
+3. On first launch you'll be asked for **Accessibility permission**.
+   - Go to System Settings → Privacy & Security → Accessibility, **enable CommandoTab**, then relaunch the app (required to intercept the Command+Tab key input).
+4. After changing the setting, quitting and relaunching the app once makes it take effect reliably.
 
-## 操作方法
+The app is **notarized by Apple**, so it launches without Gatekeeper warnings.
 
-| 操作 | 動作 |
-|------|------|
-| `Command + Tab` | スイッチャー表示 / 次のアプリへ |
-| `Command + Shift + Tab` | 前のアプリへ |
-| `Command` を離す | 選択中のアプリに切り替えて確定 |
-| `Esc`（表示中） | 取消 |
-| マウス | アイコンにホバーで選択、クリックで確定 |
+You can also install it with Homebrew.
 
-切り替え対象は **MRU（最近使った順）** で並びます（標準 Command+Tab と同じ）。
-カレンダー.app のアイコンは、本物の Dock と同じく **当日の日付** で表示されます。
+```bash
+brew install --cask EVAtiter/tap/commandotab
+```
 
-## 主な機能
+If Homebrew 7 or later reports an "untrusted tap", trust commandotab first with the command below, then install again.
 
-- 常に**マウスカーソルのあるモニター**にスイッチャーを表示（マルチモニター対応）
-- macOS 標準スイッチャー風の外観（半透明ブラー・選択ハイライト・名前ラベル）
-- MRU（最近使った順）でアプリを並べる
-- マウスによる直接選択・クリック確定
-- メニューバー常駐（Dock には出ません）、ログイン時に開く設定あり
-- **⌘M / ⌘⌥M（ウィンドウ最小化）の無効化**（メニューでトグル）
-- **標準 Dock をメインから追い出す**（Dockの監獄＝仮想ディスプレイへ。高機能ドック併用時に便利）
+```bash
+brew trust --cask evatiter/tap/commandotab
+```
 
-## Dockの監獄：標準 Dock をメインから消す（仮想ディスプレイ）
+## Usage
 
-QuickQuay のような高機能ドック／ランチャーを使っていると、macOS 標準の Dock はむしろ邪魔になります（最小化は CammandoTab の「⌘Mで最小化させない」で抑制でき、ゴミ箱も高機能ドック側で代替できます）。ところが macOS には「標準 Dock を特定ディスプレイに出さない」設定がありません。
+| Action | Behavior |
+|--------|----------|
+| `Command + Tab` | Show switcher / move to next app |
+| `Command + Shift + Tab` | Move to previous app |
+| Release `Command` | Switch to the selected app |
+| `Esc` (while shown) | Cancel |
+| Mouse | Hover to select, click to confirm |
+| `Control + Option + Command + M` | Restore all minimized windows |
 
-そこで CammandoTab は “左の拡張ディスプレイ” を**仮想ディスプレイ（＝Dockの監獄）**として自前で用意します。メニュー「Dockの監獄（仮想ディスプレイ）」を ON にし、システム設定でそれを一番左へ配置＋Dock 位置を「左」にすると、標準 Dock と標準 Command+Tab スイッチャーがメインから消えます（手順はメニュー「Dockの監獄の使い方…」で案内）。対処療法的ですが実質的な解決策です。
+Apps are ordered by **MRU (most recently used)**, just like the standard Command+Tab.
+The Calendar.app icon shows **today's date**, just like the real Dock.
 
-**基本の配置**（仮想ディスプレイを左に並べる）:
+## Features
 
-![基本の配置：仮想ディスプレイ（小）をメイン画面の左に並べる](docs/dock-jail-arrangement-standard.jpeg)
+- Always shows the switcher **on the monitor under your mouse cursor** (multi-monitor friendly)
+- Looks the same as the standard macOS switcher (translucent blur, selection highlight, app-name label, 128pt icons)
+- Orders apps by MRU (most recently used)
+- Direct selection and click-to-confirm with the mouse
+- Lives in the menu bar (not shown in the Dock), with an "Open at Login" option
+- **Disable ⌘M / ⌘⌥M (window minimize)** via the menu item "Disable ⌘M Minimize" (on by default)
+- **Restore All Minimized Windows** (from the menu, with ⌃⌥⌘M, or with the button at the top right of the switcher)
+- **Dock Jail**: push the standard Dock off your main display (onto a virtual display — handy alongside a high-function dock)
+- English / Japanese (shown in Japanese when the system language is Japanese, otherwise in English)
 
-**配置のコツ**: 仮想ディスプレイはできるだけ**下げて**置き、メイン画面の左端と重なる長さを小さくします（ただし**角だけの接触にはしない**）。重なりが小さいほど、マウスカーソルが左端を越えて仮想ディスプレイ側へ消えにくくなります。
+## Dock Jail: hide the standard Dock from your main display
 
-![配置のコツ：仮想ディスプレイ（小）を左下に置き、メイン画面との重なりを最小にする（角だけの接触は不可）](docs/dock-jail-arrangement-recommended.png)
+If you use a high-function dock/launcher such as QuickQuay, the standard macOS Dock tends to just get in the way (minimizing can be suppressed with CommandoTab's "Disable ⌘M Minimize", and the Trash can be replaced by your high-function dock). However, macOS has no setting to "not show the standard Dock on a specific display."
 
-## 動作環境
+So CommandoTab creates that "left extended display" itself, as a **virtual display** (a "Dock Jail"). Turn on "Dock Jail (Virtual Display)" from the menu, place that virtual display at the far left in System Settings, and set the Dock position to "Left" — then the standard Dock and the standard Command+Tab switcher disappear from your main display (the steps are explained in the menu item "How to Use Dock Jail…"). It's a workaround, but a practically effective one.
 
-- **対応 OS**: macOS 13.0 以降
-- **アーキテクチャ**: Universal（Apple Silicon / Intel）
-- **署名**: Apple 公証済み（Notarized Developer ID）
+- Windows that wander onto the virtual display are automatically moved back to your main display
+- The virtual display does not accept drops or clicks
+- Dock Jail pauses while displays are mirrored or during a remote session (shown in the menu)
+- To get minimized windows back out of the jailed Dock, use "Restore All Minimized Windows"
 
-## ライセンス / 開発
+**Basic arrangement** (place the virtual display to the left):
+
+![Basic arrangement: place the small virtual display to the left of your main display](docs/dock-jail-arrangement-standard.jpeg)
+
+**Tip**: place the virtual display as low as possible so it overlaps the left edge of your main display only slightly (but keep some overlap — not just corner-to-corner). The smaller the overlap, the less your cursor slips past the left edge into the virtual display.
+
+![Tip: place the small virtual display at the bottom-left with minimal overlap (not just corner-to-corner)](docs/dock-jail-arrangement-recommended.png)
+
+## Requirements
+
+- **OS**: macOS 13 Ventura or later
+- **Architecture**: Apple Silicon (arm64) only (Intel Macs are not supported)
+- **Signing**: Notarized by Apple (Developer ID)
+
+## License / Author
 
 Copyright © 2026 EVA Titer. All rights reserved.
